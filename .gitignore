@@ -1,0 +1,28 @@
+# Python virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Pytest cache
+.pytest_cache/
+
+# Generated ETL data
+staging/
+*_raw.csv
+transformed_stock_data.csv
+validated_stock_data.csv
+flagged_stock_data.csv
+
+# Local secrets / environment variables
+.env
+*.env
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
