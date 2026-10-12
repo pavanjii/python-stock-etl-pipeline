@@ -72,3 +72,29 @@ def test_large_daily_move_is_flagged():
     result = check_large_daily_move(df)
 
     assert result.iloc[0]
+
+def test_valid_stock_row_passes_all_checks():
+    df = create_test_dataframe()
+
+    assert not check_required_nulls(df).iloc[0]
+    assert not check_price_relationship(df).iloc[0]
+    assert not check_non_positive_prices(df).iloc[0]
+    assert not check_negative_volume(df).iloc[0]
+    assert not check_large_daily_move(df).iloc[0]
+
+
+
+def test_positive_threshold_boundary_is_not_flagged():
+    df = create_test_dataframe(Daily_Return_Pct=15.0)
+
+    result = check_large_daily_move(df)
+
+    assert not result.iloc[0]
+
+
+def test_negative_threshold_boundary_is_not_flagged():
+    df = create_test_dataframe(Daily_Return_Pct=-15.0)
+
+    result = check_large_daily_move(df)
+
+    assert not result.iloc[0]

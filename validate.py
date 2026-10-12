@@ -504,5 +504,5 @@ def check_negative_volume(df):
 
 
 def check_large_daily_move(df, threshold=15):
-    """Return rows where absolute daily return exceeds threshold."""
+    """Return rows where absolute daily return meets or exceeds threshold."""
     return df["Daily_Return_Pct"].abs() > threshold
